@@ -20,6 +20,12 @@ const updateUserFond = async (user) =>{
 }
 
 
+//funcion que haga la resta de mensualidad a fondos
+function calcularResta(par1,par2){
+    let resta = par1 - par2
+    return resta
+}
+
 //funcion que actualiza tabla de users
 function tableUpdate(userData){
     $(".rows").append(`
@@ -30,7 +36,7 @@ function tableUpdate(userData){
         <td>${userData.dataUser.mensualidad}</td>
         <td id="fondo_${userData.dataUser._id}">${userData.dataUser.fondos}</td>
         <td id="eliminar" data-id="${userData.dataUser._id}">Eliminar</td>
-        <td id="cobrar" data-id="${userData.dataUser._id}" dataset="${userData.dataUser.fondos}"  dataset="${userData.dataUser.mensualidad}">Cobrar</td>
+        <td id="cobrar" data-id="${userData.dataUser._id}" data-fondos="${userData.dataUser.fondos}"  data-mensualidad="${userData.dataUser.mensualidad}">Cobrar</td>
     </tr>`);
 }
 
@@ -43,27 +49,24 @@ const validacionEventos = async(type, value, event) =>{
          console.log(await delUserAccount(value))
 
     }else if(type == "cobrar"){
+
         let resultado = calcularResta(event.target.dataset.fondos, event.target.dataset.mensualidad);
-        
+
+        console.log(resultado)
+
         if(resultado >= 0){
+            
             updateUserFond({_id:value, fondos: resultado});
             $(`#fondo_${value}`).text(resultado)
+
+            event.target.dataset.fondos = resultado
+
         }else{
             $(`#fondo_${value}`).addClass("errorCobro")
         }
+
     }
 };
-
-
-
-//funcion que haga la resta de mensualidad a fondos
-function calcularResta(par1,par2){
-    let resta = par1 - par2
-    return resta
-}
-
-
-
 
 
 

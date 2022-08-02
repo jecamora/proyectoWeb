@@ -1,46 +1,116 @@
 body{
     background-color: #202124;
     color: #dddee1;
-    
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
 
 }
 
-#form {
-    width: 28%;
+#form{
+    width: 30%;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #b887b8;
+    padding: 1rem;
+    border-radius: 1rem 1rem 1rem 1rem;
+    margin: 2rem;
 }
 
-.inputs{
-    margin-bottom: 2rem;
+#form > .form-title{
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #202124;
 }
 
-.inputs input{
-    margin-right: 1rem;
+#form > .inputs{
+    width: 100;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5rem;
+    color: #202124;
+    font-weight: 600;
+}
+
+#form > .inputs > input{
+    width: 100;
+    font-weight: 600;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    text-align: center;
+    color: #b887b8;
+}
+
+#form > button{
+    width: 100;
+    font-weight: 600;
+    margin: 1rem 0rem 1rem 0rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    background: #e9aae9;
+    background: linear-gradient(180deg, #e9aae9 0%, rgba(154,0,154,1) 100%);
+    color: #202124;
+}
+
+#form > button:hover{
+    width: 100;
+    font-weight: 600;
+    margin: 1rem 0rem 1rem 0rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    background: #e9aae9;
+    background: linear-gradient(360deg, rgba(233,170,233,1) 0%, rgba(154,0,154,1) 100%);
+    color: #202124;
+}
+/* ------------------------------------------------------------------------------------------- */
+/* Color for validation */
+.errorCobro{
+    background-color: red;
+}
+/* ------------------------------------------------------------------------------------------- */
+
+
+#tableHere{
+    background: rgba(221, 222, 225, 0.479);
+    width: 30%;
+    padding: 1rem;
+    border-radius: 1rem 1rem 1rem 1rem;
 }
 
 #table{
-    border: 1px solid;
+    width: 100%;
+    border-collapse: collapse;    
+    padding: 2rem;    
+    width: 100%;
+}
+#tableHere>#table>thead{
+    height: 2rem;
 }
 
-.thead th{
-    border: 1px solid black;
+#tableHere>#table>thead>tr{
+    color: #202124;
+    background-color: #b887b8;
+    text-align: center;
+    border: 1px solid  #202124;
 }
 
-.rows td{
-    border: 1px solid black;
+#tableHere>#table>tbody{
+    text-align: center;
 }
 
-.rows td:hover{
-    cursor: pointer;
+#tableHere>#table>tbody>tr>td{
+    height: 2rem;
+    border: 1px solid  #202124;
 }
 
-.errorCobro{
-    background-color: red;
+#tableHere>#table>tbody>tr>td:first-of-type{
+    text-align: center;
 }
