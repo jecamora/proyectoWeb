@@ -7,6 +7,11 @@ const schemmaUsuario = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     mensualidad: { type: Number, required: true },
     fondos: { type: Number, required: true }
-});
+},{
+    writeConcern: {
+       w: 'majority',
+       j: true,
+       wtimeout: 1000
+    }});
 
 module.exports = mongoose.model('Usuario', schemmaUsuario, 'usuarios')

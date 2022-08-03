@@ -5,41 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 
-<body>
+<body >
     <div id="form" method="post">
-        <div>
+        <div class="inputs">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre">
         </div>
-        <div>
+        <div class="inputs">
             <label for="apellido">Apellido</label>
             <input type="text" name="apellido" id="apellido">
         </div>
-        <div>
+        <div class="inputs">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email">
+            <input type="text" name="email" id="email">
         </div>
-        <div>
+        <div class="inputs">
             <label for="mensualidad">Mensualidad</label>
             <input type="number" name="mensualidad" id="mensualidad">
         </div>
-        <div>
+        <div class="inputs">
             <label for="fondos">Fondos</label>
             <input type="number" name="fondos" id="fondos">
         </div>
-        <button type="submit" onclick="" id="agregar">
+        <button type="submit" onclick="registrarUser()" id="agregar">
             Agregar
         </button>
     </div>
 
+
     <div id="tableHere">
-        Usuarios
+        <table id="table">
+            <thead>
+                <tr class="thead">
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Mensualidad</th>
+                    <th>Fondos</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="rows">
+                
+            </tbody>
+        </table>
     </div>
 
 

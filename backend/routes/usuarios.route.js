@@ -14,20 +14,17 @@ router.post('/registrar-usuario', (req, res) => {
         mensualidad: req.body.mensualidad,
         fondos: req.body.fondos
     });
-    nuevoUsario.save((error) => {
-        if (error) {
-            res.json({
-                msj: 'Ocurrio un erorr al registrar el usuario',
-                error
-            });
-        } else {
-            res.json({
-                msj: 'El usuario se registró exitosamente'
-            });
-        }
+    nuevoUsario.save().then((respuesta)=>{
+        res.json({
+            msj: 'se registró correctamente',
+            dataUser: respuesta
+        })
+    }).catch((error)=>{
+        res.json({
+            msj:'ocurrió un error',
+            error: error
+        })
     });
-
-
 });
 
 //Obtener usuarios ruta
@@ -46,10 +43,52 @@ router.get('/obtener-usuarios', (req, res) => {
         }
     })
 });
+
+
+
 //modificar o actualizar usuario ruta
-router.put('/modificar-usuario', (req, res) => {});
+router.put('/actualizar-fondos', (req, res) => {
+    Usuario.updateOne({_id: req.body._id},{fondos: req.body.fondos}).then((respuesta)=>{
+        res.json({
+            output: respuesta.modifiedCount,
+            code:200
+        })
+    }).catch((error)=>{
+        res.json({
+            msj:'ocurrió un error con la base de datos',
+            error: error,
+            code:500
+        })
+    });
+});
+
+
+
+
 //eliminar usuario
-router.delete('/eliminar-usuarios', (req, res) => {});
+router.delete('/eliminar-usuarios/:id', (req, res) => {
+
+
+    Usuario.deleteOne({_id: req.params.id}).then((respuesta)=>{
+        res.json({
+            output: respuesta.deletedCount,
+            code: 200
+        })
+    }).catch((error)=>{
+        res.json({
+            msj: 'Error de conexion con base de datos',
+            error: error,
+            code: 500
+        })
+    })
+
+
+});
+
+    
+
+
+
 
 //siempre debe ir al final del archivo.route para poder levantar el servidor
 module.exports = router;
